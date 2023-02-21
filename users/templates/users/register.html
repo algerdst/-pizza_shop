@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Главная страница {% endblock %}
+{% block block_for_css %}<link rel="stylesheet" href="{% static 'css/users.css' %}"> {% endblock %}
+{% block content %}
+    <div class="form_body">
+        <form method="post" enctype="multipart/form-data" class="form_register">
+            {% csrf_token %}
+            <div class="form_group">
+            {{ form.first_name }}
+            </div>
+            <div class="form_group">
+            {{ form.last_name }}
+            </div>
+            <div class="form_group">
+            {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+            <div class="form_group">
+            {{ form.password1 }}
+            </div>
+            <div class="form_group">
+            {{ form.password2 }}
+            </div>
+            <div class="form_group">
+            {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+            <button>Зарегистрироваться</button>
+        </form>
+    </div>
+{% endblock %}

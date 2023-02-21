@@ -1,0 +1,181 @@
+body {
+    margin: 0px;
+    background-color: #F8F8FF;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    margin-top: 20px;
+    margin-left: 0;
+    height: 100px;
+    width: 100%;
+    background-color: rgba(12, 153, 51,0.9);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+.buttons {
+    width: 300px;
+    height: 20px;
+    margin-right: 60px;
+    display: flex;
+    justify-content: space-around;
+}
+
+a {
+    text-decoration: none;
+}
+
+.link_logo {
+    font-size: 20px;
+    color: white;
+}
+
+.category_link {
+    color: rgb(40, 41, 50);
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.category_link:hover {
+    color: rgb(251, 163, 0);
+}
+
+.nav_button {
+    font-size: 20px;
+    color: white;
+}
+
+.main_container {
+    display: flex;
+}
+
+.categories {
+    border: 2px dashed rgb(191, 191, 191);
+    width: 30%;
+    height: 0%;
+    padding-bottom: 15px;
+    margin-top: 80px;
+    margin-left: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.content {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    width: 70%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pizza {
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+
+
+}
+
+.in_cart {
+    height: 15%;
+    width: 50%;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-color: rgb(12, 153, 51)
+}
+
+.in_cart:hover {
+    color: green;
+    height: 15%;
+    width: 50%;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-color: rgb(12, 153, 51);
+    opacity: 90%;
+    box-shadow: black;
+
+}
+
+.image_pizza {
+    height: 170px;
+}
+
+.image_pizza:hover {
+    height: 180px;
+    transition: 0.2s;
+}
+
+.pagination {
+    margin: auto;
+    margin-top: 5%;
+}
+
+.pagination_element {
+    margin: 5px;
+    border-radius: 50%;
+    padding: 15px;
+    background-color: rgb(242, 239, 230);
+    color: rgb(40, 41, 50);
+}
+
+.pagination_element:hover {
+    background-color: rgb(40, 41, 50);
+    color: white;
+}
+
+.pagination_element:active {
+    background-color: rgb(251, 163, 0);
+    color: rgb(40, 41, 50);
+}
+
+.pagination_element_selected {
+    background-color: rgb(251, 163, 0);
+    color: rgb(40, 41, 50)
+}
+
+.disabled {
+    visibility: hidden;
+}
+
+.pizza_description {
+    height: 100%;
+    width: 40%;
+}
+
+.message{
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+.message.error{
+    background-color: rgba(205, 92, 92, 0.6);
+}
+
+.message.success{
+    background-color: rgba(12, 153, 51,0.6);
+}
+
+

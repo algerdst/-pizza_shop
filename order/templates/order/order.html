@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block block_for_css %}
+    <link rel="stylesheet" href="{% static 'css/order.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="main_container">
+        <form action="" class="inner_container1" method="post">
+            {% csrf_token %}
+            {{ form.first_name }}
+            {{ form.first_name.errors }}
+            {{ form.number }}
+            {{ form.number.errors }}
+            {{ form.email }}
+            {{ form.email.errors }}
+            {{ form.address }}
+            {{ form.address.errors }}
+            {{ form.comment }}
+            {{ form.comment.errors }}
+            {{ form.payment }}
+            {{ form.payment.errors }}
+            <button style="border-radius: 10px;background-color: rgb(12, 153, 51);padding: 15px;color: white;border: 0;cursor: pointer">Подтвердить заказ</button>
+        </form>
+        <div class="inner_container2">
+            <div class="orders">
+                {% for basket in baskets %}
+                    <div style="display: flex">
+                        <div class="order_discription" style="border-right: 1px solid gray;border-bottom: 1px solid gray"><h3>{{ basket.product.name }}</h3> &nbsp&nbsp <span>x</span> &nbsp&nbsp <h3>{{ basket.quantity }}</h3></div>
+                        <div class="order_discription" style="border-bottom: 1px solid gray"><h3>{{ basket.summa }} р.</h3></div>
+                    </div>
+                {% endfor %}
+            </div>
+            <h1>Итог {{ total_sum }} р.</h1>
+          </div>
+    </div>
+{% endblock %}

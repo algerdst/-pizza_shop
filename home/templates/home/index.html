@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Главная страница {% endblock %}
+{% block block_for_css %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}"> {% endblock %}
+{% block content %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <p class="message error">{{ message }}</p>
+                {% else %}
+                <p class="message success">{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    <div class="main_container">
+        {% include 'home/include_category.html' %}
+        <div class="content">
+            {% for product in object_list %}
+                <div class="pizza">
+                    <div class="image_pizza">
+                        <a href="{% url 'about_product' slug_name=product.slug %}"><img src="{{ product.image.url }} "
+                                                                                        width="100%" height="100%"
+                                                                                        alt=""></a>
+                    </div>
+                    <div style="margin-top: -5px; margin-bottom: -10px;margin-left:10px ;margin-right:10px ;">
+                        <p>{{ product.name }}</p></div>
+                    <div style="margin-top: -10px; margin-bottom: -10px;margin-left:10px ;margin-right:10px ;">
+                        <p>{{ product.price }} р.</p></div>
+                    <a href="{% url 'basket_add' product_id=product.id %}" class="in_cart"
+                       style="display: flex;justify-content: center;align-items: center;font-size: 20px;color: white">В
+                        корзину</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="pagination">
+        <a href="{% if page_obj.has_previous %}{% url 'paginator' page_obj.previous_page_number %}{% endif %}"
+           class="pagination_element {% if not page_obj.has_previous %} disabled{% endif %}"><</a>
+        {% for page in page_obj.paginator.page_range %}
+            {% if page_obj.number == page %}
+                <a href="{% url 'paginator'  page=page %}"
+                   class="pagination_element pagination_element_selected">{{ page }}</a>
+            {% else %}
+                <a href="{% url 'paginator' page=page %}" class="pagination_element">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+        <a href="{% if page_obj.has_next %}{% url 'paginator' page_obj.next_page_number %}{% endif %}"
+           class="pagination_element {% if not page_obj.has_next %} disabled{% endif %}">></a>
+    </div>
+{% endblock %}

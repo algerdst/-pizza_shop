@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load  socialaccount %}
+{% load static %}
+{% block title %} Главная страница {% endblock %}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <div class="form_body">
+        <form method="post" enctype="multipart/form-data" class="form_register">
+            {% csrf_token %}
+            <div class="form_group">
+            {{ form.username }}
+            </div>
+            <div class="form_group">
+            {{ form.password }}
+            </div>
+            <div class="form_group">
+                <p>Войти с помощью</p>
+                <a href="{% provider_login_url 'github' %}"><img src="{% static 'img/site_images/github-png.png' %}" alt="" style="width: 40px;height: 40px"></a>
+            </div>
+            <button>Войти</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,1 @@
+[{"model": "home.category", "pk": 1, "fields": {"category_name": "Пиццы", "slug": "pizzas"}}, {"model": "home.category", "pk": 2, "fields": {"category_name": "Бургеры", "slug": "burgers"}}]

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/users.css' %}">
+    <link rel="icon" href="{% static 'img/site_images/favicon.ico' %}" >
+    <title>WheelPizza </title>
+    {% block block_for_css %} {% endblock %}
+</head>
+<body>
+<nav class="header">
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'img/site_images/logo.png' %}" style="width: 170px;height: 70px" alt=""></a>
+        </div>
+        <div class="buttons">
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' user.id %}" class="nav_button"> Профиль {{ user.username }}</a>|
+                <a href="{% url 'cart' %}" class="nav_button"> Корзина </a>|
+                <a href="{% url 'logout' %}" class="nav_button"> Выйти </a>
+                {% else %}
+                <a href="{% url 'login' %}" class="nav_button"> Логин </a>|
+                <a href="{% url 'register' %}" class="nav_button"> Регистрация </a>
+            {% endif %}
+        </div>
+</nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>

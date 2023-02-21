@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %} {% endblock %}
+{% block content %}
+    <div style="display: flex;flex-direction: column;justify-content:center;align-items: center;width: 400px;height: 280px;margin: auto;margin-top: 10%;border-radius: 10px">
+        <div style="height: 40%;width: 100%;display: flex;flex-direction: column;justify-content:center;align-items: center;background-color: rgba(11,147,49,0.8);border-radius:10px"><p style="font-size: 20px">Поздравляем! {{ username }}</p></div>
+        <div style="height: 40%;width: 100%;display: flex;flex-direction: column;justify-content:center;align-items: center"><p style="font-size: 20px"><strong>Ваша запись успешно подтверждена!</strong></p></div>
+        <div style="padding-bottom: 5%;height: 20%;width: 100%;display: flex;flex-direction: column;justify-content:center;align-items: center;background-color: rgba(11,147,49,0.8);border-radius:10px"><a href="{% url 'login' %}" style="color:black;">Продолжить</a></div>
+    </div>
+{% endblock %}

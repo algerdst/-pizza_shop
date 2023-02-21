@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Главная страница {% endblock %}
+{% block content %}
+    {% if basket %}
+        <div class="main_cart">
+            <div class="inner1">
+                {% for i in table_tags %}
+                    <div class="cart_table">
+                        <span style="color: white">{{ i }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+            {% for basket in basket %}
+                <div class="inner2">
+                    <div class="product">
+                        <a href="{% url 'basket_remove' id=basket.id %}" style="margin-left: 10%" ;><img
+                                src="{% static 'img/site_images/cross.png' %}" style="width: 20px;height: 20px" alt=""></a>
+                        <img src="{{ basket.product.image.url }}"
+                             style="display: block;width: 80px;height: 80px;margin-right: 10%" alt="">
+                    </div>
+                    <div class="cart_table1">
+                        <span style="color: rgb(40,41,50)">{{ basket.product.name }}</span>
+                    </div>
+                    <div class="cart_table1">
+                        <span style="color: rgb(40,41,50)">{{ basket.product.price }}</span>
+                    </div>
+                    <form class="cart_table1" method="post" action="quantity_add1 basket.id">
+                        {% csrf_token %}
+                        <input type="number" step="1" min="1" max="10" value="{{ basket.quantity }}" name="quantity">
+                    </form>
+                    <div class="cart_table1">
+                        <span style="color: rgb(40,41,50)">{{ basket.summa }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="inner3">
+                <h1> итоговая сумма {{ total_sum }}</h1>
+                <a href="{% url 'order' %}" style="border-radius: 10px;background-color: rgb(12, 153, 51);padding: 10px;color: white">Оформить заказ</a>
+            </div>
+        </div>
+    {% else %}
+        <h1 style="margin: auto;margin-top: 20%;font-size: 50px">Корзина пуста</h1>
+    {% endif %}
+
+
+{% endblock %}

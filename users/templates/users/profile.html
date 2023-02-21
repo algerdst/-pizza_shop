@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Главная страница {% endblock %}
+{% block block_for_css %}
+    <link rel="stylesheet" href="{% static 'css/users.css' %}"> {% endblock %}
+{% block content %}
+    <form class="profile_container" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <img class="profile_image" src="{{ user.image.url }}" display="block" max-width="100%" border-radius="10px">
+        <div class="profile_data">
+            {{ form.first_name }}
+            {{ form.last_name }}
+        </div>
+
+
+        {{ form.image }}
+
+        <div class="profile_data">
+            <div class="name1">{{ user.username }}</div>
+            {{ form.email }}
+        </div>
+        <button>Сохранить</button>
+    </form>
+{% endblock %}
