@@ -30,7 +30,7 @@ class Order(models.Model):
     comment = models.TextField(default='', blank=True)
     payment = models.SmallIntegerField(default=BY_CASH, choices=PAYMENT_METHOD)
     content = models.TextField(max_length=1000, default='')
-    waiting_time = models.SmallIntegerField(default=0)
+    waiting_time = models.SmallIntegerField(default=0) # Время ожидания заказа
     initiator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
