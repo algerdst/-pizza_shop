@@ -11,6 +11,9 @@ class OrderForm(forms.ModelForm):
     email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'inner_container1_field', 'placeholder': 'Email'}))
     address = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'inner_container1_field', 'placeholder': 'Адрес доставки'}))
+    waiting_time = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'inner_container1_field',
+                                      'placeholder': 'Через сколько минут заберете заказ?'}))
     comment = forms.CharField(required=False, widget=forms.Textarea(
         attrs={'class': 'inner_container1_field', 'placeholder': 'Комментарий к заказу(необязательно)'}))
     payment = forms.ChoiceField(widget=forms.RadioSelect(),
@@ -18,7 +21,7 @@ class OrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        fields = ['first_name', 'number', 'email', 'address', 'comment', 'payment']
+        fields = ['first_name', 'number', 'waiting_time', 'email', 'address', 'comment', 'payment']
 
     def save(self, commit=True):
         super(OrderForm, self).save(commit=True)

@@ -23,13 +23,14 @@ class Order(models.Model):
         (BY_CARD, 'Картой'),
     )
     first_name = models.CharField(max_length=64)
-    number = models.CharField(default='', max_length=20)
+    number = models.CharField(default='', max_length=20)  # Номер телефона клиента
     address = models.CharField(max_length=256)
     created = models.DateTimeField(auto_now_add=True)
     status = models.SmallIntegerField(default=CREATED, choices=STATUSES)
     comment = models.TextField(default='', blank=True)
     payment = models.SmallIntegerField(default=BY_CASH, choices=PAYMENT_METHOD)
     content = models.TextField(max_length=1000, default='')
+    waiting_time = models.SmallIntegerField(default=0)
     initiator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -42,8 +43,10 @@ class Order(models.Model):
     def send_order(self):
         send_mail(
             '',
-            f'''Заказ для {self.first_name}\nСодержание заказа: {self.content}\nНомер телефона: {self.number}\n
-            Комментарий к заказу: {self.comment}\nАдрес доставки: {self.address}\nСпособ оплаты: {self.payment}''',
+            f'''Заказ для {self.first_name}\nСодержание заказа: {self.content}\nЗаберет через {self.waiting_time} минут
+            \nНомер телефона: {self.number}\nКомментарий к заказу: {self.comment}\nАдрес доставки: {self.address}\n
+            Способ оплаты: {self.payment}
+            ''',
             settings.EMAIL_HOST_USER,
             [settings.EMAIL_HOST_USER]
         )
