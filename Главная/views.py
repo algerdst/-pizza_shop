@@ -43,7 +43,7 @@ class ProductsListView(ContextMixin, ListView):
             'category')
         return queryset
 
-
+@login_required
 def basket_add(request, product_id):
     if request.user.id is None:
         messages.error(request, 'Для использования корзины требуется авторизация')
